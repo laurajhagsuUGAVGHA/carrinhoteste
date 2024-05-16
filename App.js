@@ -12,8 +12,7 @@ const products = [
   { id: '8', name: 'Club Social', price: 9.00, image: require('./assets/club-social.png') },
   { id: '9', name: 'Bolacha Doce', price: 6.25, image: require('./assets/bolacha-doce.png') },
   { id: '10', name: 'Sequilhos Banco', price: 11.50, image: require('./assets/sequilhos.png') },
-  { id: '11', name: 'Cokies', price: 3.25, image: require('./assets/cokies.png') },1
-
+  { id: '11', name: 'Cookies', price: 3.25, image: require('./assets/cookies.png') },
 ];
 
 const App = () => {
@@ -33,11 +32,16 @@ const App = () => {
   };
 
   const removeFromCart = (productId) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity: item.quantity > 1 ? item.quantity - 1 : 1 } : item
-      )
-    );
+    setCart((prevCart) => {
+      const itemInCart = prevCart.find((item) => item.id === productId);
+      if (itemInCart.quantity > 1) {
+        return prevCart.map((item) =>
+          item.id === productId ? { ...item, quantity: item.quantity - 1 } : item
+        );
+      } else {
+        return prevCart.filter((item) => item.id !== productId);
+      }
+    });
   };
 
   const increaseQuantity = (productId) => {
@@ -49,11 +53,16 @@ const App = () => {
   };
 
   const decreaseQuantity = (productId) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === productId ? { ...item, quantity: item.quantity > 1 ? item.quantity - 1 : 1 } : item
-      )
-    );
+    setCart((prevCart) => {
+      const itemInCart = prevCart.find((item) => item.id === productId);
+      if (itemInCart.quantity > 1) {
+        return prevCart.map((item) =>
+          item.id === productId ? { ...item, quantity: item.quantity - 1 } : item
+        );
+      } else {
+        return prevCart.filter((item) => item.id !== productId);
+      }
+    });
   };
 
   return (
@@ -68,7 +77,7 @@ const App = () => {
           <View style={styles.product}>
             <Image source={item.image} style={styles.image} />
             <View style={styles.productInfo}>
-              <Text style={[styles.productName, item.name === 'MERCADINHO' && styles.MercadinhoName]}>
+              <Text style={[styles.productName, item.name === 'Pão Puma' && styles.paopumaName]}>
                 {item.name}
               </Text>
               <Text>R$ {item.price.toFixed(2)}</Text>
@@ -141,18 +150,16 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
   },
   productInfo: {
     flex: 1,
   },
   productName: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
-  },
-  MercadinhoName: {
-    fontSize: 24,
+    left: 10,
   },
   buttonContainer: {
     flexDirection: 'row',
