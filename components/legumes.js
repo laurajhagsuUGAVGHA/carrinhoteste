@@ -65,10 +65,14 @@ const App = () => {
     });
   };
 
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.header1}>LEGUMES E VEGETAIS </Text>
+        <Text style={styles.header1}>LEGUMES E VEGETAIS</Text>
       </View>
       <FlatList
         data={products}
@@ -77,7 +81,7 @@ const App = () => {
           <View style={styles.product}>
             <Image source={item.image} style={styles.image} />
             <View style={styles.productInfo}>
-              <Text style={[styles.productName, item.name === 'Banana' && styles.bananaName]}>
+              <Text style={[styles.productName, item.name === 'Batata' && styles.batataName]}>
                 {item.name}
               </Text>
               <Text>R$ {item.price.toFixed(2)}</Text>
@@ -118,10 +122,14 @@ const App = () => {
           </View>
         )}
       />
+      <Text style={styles.total}>Total: R$ {calculateTotal()}</Text>
     </View>
   );
 };
 
+
+
+  
 const styles = StyleSheet.create({
   container: {
     flex: 1,

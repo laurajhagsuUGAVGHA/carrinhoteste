@@ -3,17 +3,17 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Button, Image } from 'react-native';
 
 const products = [
-  { id: '1', name: 'Pão Puma', price: 8.99, image: require('./assets/pao.png') },
-  { id: '2', name: 'Bisnaguinha Panco', price: 7.99, image: require('./assets/bisnaguinha.png') },
-  { id: '3', name: 'Bolo Puma/sabor chocolate', price: 8.99, image: require('./assets/bolo-chocolate.png') },
-  { id: '4', name: 'Bolo Puma/sabor laranja', price: 8.99, image: require('./assets/bolo-laranja.png') },
-  { id: '5', name: 'Oreo', price: 3.50, image: require('./assets/oreo.png') },
-  { id: '6', name: 'Trakinas', price: 3.00, image: require('./assets/trakinas.png') },
-  { id: '7', name: 'Bono', price: 3.25, image: require('./assets/bono.png') },
-  { id: '8', name: 'Club Social', price: 9.00, image: require('./assets/club-social.png') },
-  { id: '9', name: 'Bolacha Doce', price: 6.25, image: require('./assets/bolacha-doce.png') },
-  { id: '10', name: 'Sequilhos Banco', price: 11.50, image: require('./assets/sequilhos.png') },
-  { id: '11', name: 'Cookies', price: 3.25, image: require('./assets/cookies.png') },
+  { id: '1', name: 'Sabão em Pó', price: 29.00, image: require('./assets/sabaoempo.png') },
+  { id: '2', name: 'Sabão Liquido', price: 35.99, image: require('./assets/sabaoliquido.png') },
+  { id: '3', name: 'Amaciante', price: 9.99, image: require('./assets/amaciante.png') },
+  { id: '4', name: 'Desinfetante', price: 4.99, image: require('./assets/desinfetante.png') },
+  { id: '5', name: 'Detergente', price: 3.99, image: require('./assets/detergente.png') },
+  { id: '6', name: 'Esponja de Limpeza', price: 5.99, image: require('./assets/esponja.png') },
+  { id: '6', name: 'Bom Bril', price: 3.99, image: require('./assets/bombril.png') },
+  
+  
+  
+
 ];
 
 const App = () => {
@@ -73,7 +73,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.header1}>PRODUTOS PANIFICADOS</Text>
+        <Text style={styles.header1}>PRODUTOS DE LIMPEZA</Text>
       </View>
       <FlatList
         data={products}
@@ -82,7 +82,7 @@ const App = () => {
           <View style={styles.product}>
             <Image source={item.image} style={styles.image} />
             <View style={styles.productInfo}>
-              <Text style={[styles.productName, item.name === 'Pão Puma' && styles.paoName]}>
+              <Text style={[styles.productName, item.name === 'Sabão em Pó' && styles.sabaoName]}>
                 {item.name}
               </Text>
               <Text>R$ {item.price.toFixed(2)}</Text>
@@ -128,6 +128,9 @@ const App = () => {
   );
 };
 
+
+
+  
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -141,7 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginVertical: 10,
-    backgroundColor: '#8F5703',
+    backgroundColor: '#0CB609',
     borderRadius: 30,
     height: 60,
     width: 270,

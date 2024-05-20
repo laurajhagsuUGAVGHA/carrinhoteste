@@ -1,19 +1,22 @@
-
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Button, Image } from 'react-native';
 
 const products = [
-  { id: '1', name: 'Pão Puma', price: 8.99, image: require('./assets/pao.png') },
-  { id: '2', name: 'Bisnaguinha Panco', price: 7.99, image: require('./assets/bisnaguinha.png') },
-  { id: '3', name: 'Bolo Puma/sabor chocolate', price: 8.99, image: require('./assets/bolo-chocolate.png') },
-  { id: '4', name: 'Bolo Puma/sabor laranja', price: 8.99, image: require('./assets/bolo-laranja.png') },
-  { id: '5', name: 'Oreo', price: 3.50, image: require('./assets/oreo.png') },
-  { id: '6', name: 'Trakinas', price: 3.00, image: require('./assets/trakinas.png') },
-  { id: '7', name: 'Bono', price: 3.25, image: require('./assets/bono.png') },
-  { id: '8', name: 'Club Social', price: 9.00, image: require('./assets/club-social.png') },
-  { id: '9', name: 'Bolacha Doce', price: 6.25, image: require('./assets/bolacha-doce.png') },
-  { id: '10', name: 'Sequilhos Banco', price: 11.50, image: require('./assets/sequilhos.png') },
-  { id: '11', name: 'Cookies', price: 3.25, image: require('./assets/cookies.png') },
+  { id: '1', name: 'Arroz', price: 34.00, image: require('./assets/arroz.png') },
+  { id: '2', name: 'Feijão', price: 7.99, image: require('./assets/feijao.png') },
+  { id: '3', name: 'Açúcar', price: 5.99, image: require('./assets/açucar.png') },
+  { id: '4', name: 'Milho para Pipoca', price: 8.90, image: require('./assets/pipoca.png') },
+  { id: '5', name: 'Farinha de Trigo', price: 4.90, image: require('./assets/trigo.png') },
+  { id: '6', name: 'Farinha de Aveia', price: 9.99, image: require('./assets/aveia.png') },
+  { id: '7', name: 'Granola', price: 15.00, image: require('./assets/granola.png') },
+  { id: '8', name: 'Espaguete N°8', price: 4.99, image: require('./assets/espaguete.png') },
+  { id: '9', name: 'Macarrão Pena', price: 4.99, image: require('./assets/pena.png') },
+  { id: '10', name: 'Macarrão Parafuso', price: 4.99, image: require('./assets/parafuso.png') },
+  { id: '11', name: 'Massa de Bolo sabor chocolate', price: 7.99, image: require('./assets/massachocolate.png') },
+  { id: '12', name: 'Massa de Bolo sabor baunilha', price: 7.99, image: require('./assets/massabaunilha.png') },
+  { id: '13', name: 'Massa de Bolo sabor laranja', price: 7.99, image: require('./assets/massalaranja.png') },
+  { id: '14', name: 'Cereal nestle', price: 9.99, image: require('./assets/nescau.png') },
+  { id: '15', name: 'Sucrilhos', price: 9.99, image: require('./assets/sucrilhos.png') },
 ];
 
 const App = () => {
@@ -73,7 +76,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.header1}>PRODUTOS PANIFICADOS</Text>
+        <Text style={styles.header1}>GRÃOS E CEREAIS</Text>
       </View>
       <FlatList
         data={products}
@@ -82,7 +85,7 @@ const App = () => {
           <View style={styles.product}>
             <Image source={item.image} style={styles.image} />
             <View style={styles.productInfo}>
-              <Text style={[styles.productName, item.name === 'Pão Puma' && styles.paoName]}>
+              <Text style={[styles.productName, item.name === 'Arroz' && styles.arrozName]}>
                 {item.name}
               </Text>
               <Text>R$ {item.price.toFixed(2)}</Text>
@@ -141,7 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginVertical: 10,
-    backgroundColor: '#8F5703',
+    backgroundColor: '#FFD166',
     borderRadius: 30,
     height: 60,
     width: 270,
@@ -153,8 +156,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 10, // Espessura do preenchimento vertical
-    marginBottom: 45, // Adicionando margem inferior para maior espaçamento entre produtos
+    paddingVertical: 10,
+    marginBottom: 45,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
@@ -171,7 +174,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     top: -9,
   },
-  
   buttonContainer: {
     width: 100,
     height: 70,
@@ -189,7 +191,6 @@ const styles = StyleSheet.create({
   quantity: {
     fontSize: 18,
     marginHorizontal: 5,
-    
   },
   quantityControl: {
     flexDirection: 'row',
@@ -202,6 +203,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
+  },
+  total: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 20,
   },
 });
 

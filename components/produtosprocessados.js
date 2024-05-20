@@ -1,4 +1,5 @@
 
+
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Button, Image } from 'react-native';
 
@@ -64,6 +65,10 @@ const App = () => {
     });
   };
 
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -117,10 +122,10 @@ const App = () => {
           </View>
         )}
       />
+      <Text style={styles.total}>Total: R$ {calculateTotal()}</Text>
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
